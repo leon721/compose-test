@@ -6,4 +6,5 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          docker-compose up --build
+          docker build --rm=false --tag "leon721/composetest:${CIRCLE_SHA1}" .
+          docker run --rm -it --entrypoint python "leon721/composetest:${CIRCLE_SHA1}" -m unittest discover
