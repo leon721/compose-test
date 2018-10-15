@@ -6,4 +6,5 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          docker-compose up --build
+          docker build -t leon721/composetest:$CIRCLE_BRANCH . \
+          docker push leon721/composetest:$CIRCLE_BRANCH
